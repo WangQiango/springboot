@@ -1,0 +1,78 @@
+1.查看日志常用命令
+    tail:  查看后多少行的日志
+       -n  是显示行号；相当于nl命令；例子如下：
+            tail -100f test.log      实时监控100行日志
+            tail  -n  10  test.log   查询日志尾部最后10行的日志;
+
+            tail -n +10 test.log    查询10行之后的所有日志;
+
+    head:  查看前多少行的日志
+
+        跟tail是相反的，tail是看后多少行日志；例子如下：
+
+            head -n 10  test.log   查询日志文件中的头10行日志;
+
+            head -n -10  test.log   查询日志文件除了最后10行的其他所有日志;
+
+    cat： 
+
+        tac是倒序查看，是cat单词反写；例子如下：
+
+            cat -n test.log |grep "debug"   查询关键字的日志
+
+2. 应用场景一：按行号查看---过滤出关键字附近的日志
+
+     1）cat -n test.log |grep "debug"  得到关键日志的行号
+
+ 
+
+ 　2）通常查找出错误日志 cat error.log | grep 'nick' , 这时候我们还有个需求就是输出当前这个日志的前后几行：
+
+　　　　cat error.log | grep -B 5 'nick' 显示nick及前5行
+
+　　　　cat error.log | grep -A 5 'nick' 显示nick及后5行
+
+　　　　cat error.log | grep -C 5 'nick' 显示file文件里匹配nick字串那行以及上下5行
+
+　　　　cat error.log | grep -n -B10 -A10 5 'nick' 显示file文件里匹配nick字串前后10行
+
+3. 应用场景二：选取日志中特定范围进行分析
+
+　  1）cat -n test.log |tail -n +1000|head -n 20   从第1000行开始，显示20行
+
+            tail -n +1000表示查询1000行之后的日志
+
+            head -n 20 则表示在前面的查询结果里再查前20条记录
+
+　 2）cat catalina.out | head -n 1400| tail -n +1350  显示1350行到1400行 （实现原理都差不多，就是通过语法糖）
+
+ 
+
+　（1）按日期截取 ：一般在日志系统中都会记录打印日志的时间，通常我们非常需要查找指定时间端的日志：
+
+      　　sed -n '/2014-12-17 16:17:20/,/2014-12-17 16:17:36/p'  test.log
+
+      　　特别说明:该命令中的两个日期值必须是日志文件中包含的值,否则该命令无效.； 先 grep '2014-12-17 16:17:20' test.log 来确定日志中是否有该 时间点
+
+　（2）按行数截取
+
+　　　　sed -n ‘10000,20000p’ test.log                
+
+ 　　　  sed -i '/关键词/d' catalina.out  删除包含关键词的行
+ 
+ 
+ 
+ 4.应用场景三：日志内容特别多，打印在屏幕上不方便查看
+    (1)使用more和less命令,
+
+           如： cat -n test.log |grep "debug" |more     这样就分页打印了,通过点击空格键翻页
+
+    (2)使用 >xxx.txt 将其保存到文件中,到时可以拉下这个文件分析
+
+            如：cat -n test.log |grep "debug"  >debug.txt
+
+5：使用管道进行and or条件处理
+
+　　and 使用管道实现   例如：  grep -n '日志排查' test.log | grep '日志'
+
+　　or 用-E   例如：grep -n -E '日志排查|hello' test.log  满足两个关键字的都可以找出来
