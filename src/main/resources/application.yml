@@ -17,6 +17,7 @@ server:
 spring:
   profiles:
     active: prod
+debug: true
 ---
 server:
   port: 8082

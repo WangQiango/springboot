@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.Field;
+
 /**
  * SpringBoot单元测试
  *
@@ -36,4 +38,16 @@ class SpringbootApplicationTests {
         System.out.println(ioc.containsBean("helloService"));
     }
 
+
+    @Test
+    public void changeString() throws NoSuchFieldException, IllegalAccessException {
+        //通过反射的方式获取类的属性和方法并且修改类的属性，从而达到修改String的值
+        String s  = "Hello World";
+        System.out.println("s = " + s);
+        Field field = String.class.getDeclaredField("value");
+        field.setAccessible(true);
+        char[] chars = (char[])field.get(s);
+        chars[5] = '_';
+        System.out.println("s = " + s);// s = Hello_World
+    }
 }
