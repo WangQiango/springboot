@@ -5,7 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-<h1>成功！</h1>
-<body th:text="${hello}">这是原有内容</body>
+
+<div id="1" th:text="${hello}"></div>   <!--th:text  不转义字符-->
+<div id="2" th:utext="${hello}"></div>  <!--th:utext 转义字符-->
+
+<hr/>
+
+<table>
+    <tr>
+        <th>姓名</th>
+    </tr>
+    <tr th:each="username : ${users}">
+        <td th:text="${username}"></td>
+    </tr>
+</table>
+
+<hr/>
+<!-- th:each 存在在哪个标签上，就会遍历生成多个相同的标签-->
+<!--这个就会生成多个 h4 标签-->
+<h4 th:text="${user}" th:each="user:${users}"></h4>
+<hr/>
+<h4 >
+    <!--这个会在h4标签里面生成多个span标签-->
+    <span th:each="user:${users}" th:text="${user}"></span>
+</h4>
 </body>
 </html>

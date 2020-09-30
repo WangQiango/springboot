@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.Map;
 
 @Controller
@@ -26,7 +27,8 @@ public class HelloController {
     //查出一些数据在页面展示
     @RequestMapping("/success")
     public String success(Map map){
-        map.put("hello","你好");
+        map.put("hello","<h2>你好</h2>");
+        map.put("users", Arrays.asList("zhangsan","lisi","wangwu","zhaoliu"));
         return "success";
     }
 
