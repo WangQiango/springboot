@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\Program Files\MavenHome" />
+        <option name="mavenHome" value="E:/Program Files/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="E:\Program Files\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iduf2t8rTf3PLUeW9R3VeHEMQH" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/springboot-web-restfulcrud" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="SpringbootWebRestfulcrudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot-web-restfulcrud" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.wangqiang.springboot.SpringbootWebRestfulcrudApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="215" key="FileChooserDialogImpl" timestamp="1602250002725">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="215" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1602250002725" />
+    <state x="600" y="223" key="NewModule_or_Project.wizard" timestamp="1602250005272">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="600" y="223" key="NewModule_or_Project.wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1602250005272" />
+  </component>
+</project>
