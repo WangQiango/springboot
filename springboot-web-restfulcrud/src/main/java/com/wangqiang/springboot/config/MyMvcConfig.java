@@ -37,6 +37,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
+        System.out.println("webMvcConfigurerAdapter注册进去了");
          WebMvcConfigurerAdapter webMvcConfigurerAdapter = new WebMvcConfigurerAdapter() {
              @Override
              public void addInterceptors(InterceptorRegistry registry) {
