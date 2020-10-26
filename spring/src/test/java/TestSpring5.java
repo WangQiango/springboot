@@ -1,4 +1,8 @@
+import com.spring.at.bean.Book;
+import com.spring.at.bean.Orders;
 import com.spring.at.bean.User;
+import com.spring.at.factoryBean.MyFactoryBean;
+import com.spring.at.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -30,5 +34,38 @@ public class TestSpring5 {
         User user2 = applicationContext.getBean("user", User.class);
         System.out.println(user2);
         user2.add();
+    }
+
+    @Test
+    public void OrdersTest(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService = applicationContext.getBean("userService",UserService.class);
+        userService.add();
+    }
+
+    @Test
+    public void factoryBeanTest(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Book myFactoryBean = applicationContext.getBean("myFactoryBean",Book.class);
+        System.out.println(myFactoryBean);
+
+    }
+
+    @Test
+    public void scopeTest(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        User a1 = applicationContext.getBean("user1",User.class);
+//        User a2 = applicationContext.getBean("user1",User.class);
+        User b1 = applicationContext.getBean("user2",User.class);
+        User b2 = applicationContext.getBean("user2",User.class);
+//        System.out.println(a1+"\n"+a2+"\n"+b1+"\n"+b2);
+    }
+
+    @Test
+    public void initMethod(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Book book = applicationContext.getBean("book",Book.class);
+        //applicationContext调用close方法的时候就会执行配置文件中的bean中属性destroy-method的方法
+        ((ClassPathXmlApplicationContext)applicationContext).close();
     }
 }

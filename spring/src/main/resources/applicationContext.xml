@@ -3,7 +3,40 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--配置相关User类对象创建-->
-    <bean id="user" class="com.spring.at.bean.User">
-        <property name="name" value="王老板"/>
+    <bean id="user1" class="com.spring.at.bean.User" scope="singleton"></bean>
+    <bean id="user2" class="com.spring.at.bean.User" scope="prototype"></bean>
+
+
+    <bean id="book" class="com.spring.at.bean.Book" init-method="initMethod" destroy-method="destroy">
+        <!--<property name="name" value="葵花宝典"/>-->
+        <!--<property name="name">
+            <null/>
+        </property>-->
+        <!--属性值包含特殊符号
+            1 把<>进行转义 &lt;&gt
+            2 把带特殊符号的内容写到CDATA中去
+            -->
+        <property name="name">
+            <value><![CDATA[<<葵花宝典>>]]></value>
+        </property>
     </bean>
+    <!--配置后置处理器,会为当前配置文件中的所有bean添加后置处理器-->
+    <bean id="myBeanPost" class="com.spring.at.beanPostProcesser.BookBeanPostProcesser"/>
+
+
+    <bean id="orders" class="com.spring.at.bean.Orders">
+        <constructor-arg name="id" value="111"/>
+        <constructor-arg name="number" value="一亿个"/>
+<!--        <constructor-arg index="0" value="110"/>-->
+<!--        <constructor-arg index="1" value="一万个"/>-->
+    </bean>
+
+    <bean id="userDao" class="com.spring.at.dao.UserDaoImp"/>
+    <bean id="userService" class="com.spring.at.service.UserService">
+        <property name="userDaoImp"  ref="userDao"/>
+    </bean>
+
+
+    <bean id="myFactoryBean" class="com.spring.at.factoryBean.MyFactoryBean"></bean>
+
 </beans>
