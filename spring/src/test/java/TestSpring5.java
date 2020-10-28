@@ -1,3 +1,4 @@
+import com.spring.at.autowire.Emp;
 import com.spring.at.bean.Book;
 import com.spring.at.bean.Orders;
 import com.spring.at.bean.User;
@@ -68,4 +69,11 @@ public class TestSpring5 {
         //applicationContext调用close方法的时候就会执行配置文件中的bean中属性destroy-method的方法
         ((ClassPathXmlApplicationContext)applicationContext).close();
     }
+    @Test
+    public void testAutoWire(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean5.xml");
+        Emp book = applicationContext.getBean("empl",Emp.class);
+        book.test();
+    }
+
 }

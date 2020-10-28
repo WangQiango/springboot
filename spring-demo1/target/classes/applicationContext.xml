@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <!-- 设置扫描注解类的包   -->
+
+    <!-- 实例一
+        use-default-filters="false" 表示现在不使用默认的filter，自己配置filter
+        context:include-filter ，设置扫描哪些注解标记的类
+        相当于只扫描加载@Controller注解标记的类
+     -->
+    <!--<context:component-scan base-package="com.spring.at" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>-->
+
+    <!-- 实例二
+        默认扫描所有包下面的类
+        context:exclude-filter,设置不被扫描的类
+        相当于不扫描@Service注解标记的类
+     -->
+    <context:component-scan base-package="com.spring.at">
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+    </context:component-scan>
+</beans>
