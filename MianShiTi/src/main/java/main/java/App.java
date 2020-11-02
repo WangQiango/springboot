@@ -1,5 +1,6 @@
 package main.java;
 
+import HashMap.HashMap01;
 import main.java.inte.Map;
 
 public class App {
